@@ -1,62 +1,89 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <string>
+#include <climits>
+
 using namespace std;
 
-map<string, vector<pair<string, int>>> graph;
-
-struct Node {
+struct Region {
     string name;
+    int demand;
     int cost;
-    vector<string> path;
+};
 
-    bool operator>(const Node& other) const {
-        return cost > other.cost;
+struct State {
+    vector<int> allocation;
+    int totalCost;
+};
+
+struct Compare {
+    bool operator()(State a, State b) {
+        return a.totalCost > b.totalCost;
     }
 };
 
-void UCS(string start, string goal)
-{
-    priority_queue<Node, vector<Node>, greater<Node>> pq;
-    set<string> visited;
+int calculateCost(const vector<int>& alloc, const vector<Region>& regions) {
+    int cost = 0;
+    for (int i = 0; i < alloc.size(); i++)
+        cost += alloc[i] * regions[i].cost;
+    return cost;
+}
 
-    pq.push({start, 0, {start}});
+int main() {
+
+    int capacity = 150;
+
+    vector<Region> regions = {
+        {"Hospital", 50, 2},
+        {"Factory", 70, 3},
+        {"Residential", 60, 1}
+    };
+
+    priority_queue<State, vector<State>, Compare> pq;
+    State start;
+    start.allocation = vector<int>(regions.size(), 0);
+    start.totalCost = 0;
+
+    pq.push(start);
+
+    State best;
+    best.totalCost = INT_MAX;
 
     while (!pq.empty()) {
-        Node current = pq.top();
+        State current = pq.top();
         pq.pop();
 
-        if (visited.count(current.name))
-            continue;
+        int used = 0;
+        for (int x : current.allocation) used += x;
 
-        visited.insert(current.name);
+        if (used <= capacity) {
+            bool goal = true;
+            for (int i = 0; i < regions.size(); i++)
+                if (current.allocation[i] < regions[i].demand)
+                    goal = false;
 
-        if (current.name == goal) {
-            for (auto &node : current.path)
-                cout << node << " ";
-            cout << current.cost << endl;
-            return;
+            if (goal) {
+                best = current;
+                break;
+            }
         }
 
-        for (auto &neighbor : graph[current.name]) {
-            string next = neighbor.first;
-            int edgeCost = neighbor.second;
-
-            if (!visited.count(next)) {
-                auto newPath = current.path;
-                newPath.push_back(next);
-                pq.push({next, current.cost + edgeCost, newPath});
+        for (int i = 0; i < regions.size(); i++) {
+            if (current.allocation[i] < regions[i].demand && used < capacity) {
+                State next = current;
+                next.allocation[i]++;
+                next.totalCost = calculateCost(next.allocation, regions);
+                pq.push(next);
             }
         }
     }
-}
 
-int main()
-{
-    graph["Station"] = {{"A", 3}, {"B", 6}};
-    graph["A"] = {{"C", 4}};
-    graph["B"] = {{"C", 2}};
-    graph["C"] = {{"Goal", 1}};
-    graph["Goal"] = {};
+    cout << "UCS Result:\n";
+    for (int i = 0; i < regions.size(); i++)
+        cout << regions[i].name << " -> " << best.allocation[i] << endl;
 
-    UCS("Station", "Goal");
+    cout << "Total Cost: " << best.totalCost << endl;
+
     return 0;
 }
