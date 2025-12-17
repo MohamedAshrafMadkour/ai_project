@@ -1,12 +1,12 @@
 # ⚡ Smart Electrical Grid Power Distribution Problem
 ------------------------------------------
 
-Problem Overview
+## 🔹 Problem Overview
 the problem of optimizing power distribution from a limited-capacity power station to multiple regions. The station supplies electricity to three main regions: a Hospital, a Factory, and a Residential Area.
 Each region has a specific power demand, priority level, and transmission cost. The goal is to distribute the available power efficiently while respecting capacity constraints, prioritizing critical regions, and minimizing the overall distribution cost.
 ------------------------------------------
 
-## Regions
+## 🌍 Regions
 The power station supplies electricity to the following regions:
 
 <kbd>1</kbd> Hospital (**High Priority**)  
@@ -18,7 +18,7 @@ The power station supplies electricity to the following regions:
 
 -------------------------------------------
 
-## Algorithms Used
+## 🧩 Algorithms Used
 
 <kbd>1</kbd> Breadth-First Search (BFS)  
 
@@ -35,7 +35,7 @@ The power station supplies electricity to the following regions:
 <kbd>7</kbd> Iterative Deepening Search (IDS) 
 
 --------------------------------------------
-## Team Contributions
+## 👥 Team Contributions
 
 <kbd>1</kbd> **Mahmoud Hesham Salem**  
 ➜ Uniform Cost Search Algorithm  
