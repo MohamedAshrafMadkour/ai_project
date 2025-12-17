@@ -19,19 +19,41 @@ The power station supplies electricity to the following regions:
 
 ## Algorithms Used
 
-<span style="color:#9CA3AF; font-weight:600;">1.</span> Breadth-First Search (BFS)  
+<span style="display:inline-block; width:26px; height:26px; line-height:26px; 
+background-color:#E5E7EB; color:#374151; text-align:center; 
+border-radius:6px; font-weight:600;">1</span>
+Breadth-First Search (BFS)
 
-<span style="color:#9CA3AF; font-weight:600;">2.</span> Depth-First Search (DFS)  
+<span style="display:inline-block; width:26px; height:26px; line-height:26px; 
+background-color:#E5E7EB; color:#374151; text-align:center; 
+border-radius:6px; font-weight:600;">2</span>
+Depth-First Search (DFS)
 
-<span style="color:#9CA3AF; font-weight:600;">3.</span> Uniform Cost Search (UCS)  
+<span style="display:inline-block; width:26px; height:26px; line-height:26px; 
+background-color:#E5E7EB; color:#374151; text-align:center; 
+border-radius:6px; font-weight:600;">3</span>
+Uniform Cost Search (UCS)
 
-<span style="color:#9CA3AF; font-weight:600;">4.</span> A* Search  
+<span style="display:inline-block; width:26px; height:26px; line-height:26px; 
+background-color:#E5E7EB; color:#374151; text-align:center; 
+border-radius:6px; font-weight:600;">4</span>
+A* Search
 
-<span style="color:#9CA3AF; font-weight:600;">5.</span> Greedy Algorithm  
+<span style="display:inline-block; width:26px; height:26px; line-height:26px; 
+background-color:#E5E7EB; color:#374151; text-align:center; 
+border-radius:6px; font-weight:600;">5</span>
+Greedy Algorithm
 
-<span style="color:#9CA3AF; font-weight:600;">6.</span> Genetic Algorithm  
+<span style="display:inline-block; width:26px; height:26px; line-height:26px; 
+background-color:#E5E7EB; color:#374151; text-align:center; 
+border-radius:6px; font-weight:600;">6</span>
+Genetic Algorithm
 
-<span style="color:#9CA3AF; font-weight:600;">7.</span> Iterative Deepening Search (IDS)  
+<span style="display:inline-block; width:26px; height:26px; line-height:26px; 
+background-color:#E5E7EB; color:#374151; text-align:center; 
+border-radius:6px; font-weight:600;">7</span>
+Iterative Deepening Search (IDS)
+
 
 --------------------------------------------
 
