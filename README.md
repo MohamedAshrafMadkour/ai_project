@@ -23,12 +23,24 @@ Algorithms Used
 7- Iterative depth search (IDS)
 --------------------------------------------
 
-Team Contributions
-1-  Mahmoud hesham salem  ========>    ( Uniform costed search algorithm  -  Iterative depth search )
-2-  Mohamed Ashraf Madkour =======>    ( Genetic Algorithm )
-3 - Assem Essam Nabil Abdelhamid =>    ( Greedy Algorithm ) 
-4 - Fatma Mohamed Abdelaty Abdelqader=>( Breadth-First Search -  Depth-First Search )
-5 - Jana Ahmed Samy Shahin =======>    ( A* Search )
+## Team Contributions
+
+<span style="color:#9CA3AF; font-weight:600;">1.</span> **Mahmoud Hesham Salem**  
+➜ Uniform Cost Search Algorithm  
+➜ Iterative Deepening Search  
+
+<span style="color:#9CA3AF; font-weight:600;">2.</span> **Mohamed Ashraf Madkour**  
+➜ Genetic Algorithm  
+
+<span style="color:#9CA3AF; font-weight:600;">3.</span> **Assem Essam Nabil Abdelhamid**  
+➜ Greedy Algorithm  
+
+<span style="color:#9CA3AF; font-weight:600;">4.</span> **Fatma Mohamed Abdelaty Abdelqader**  
+➜ Breadth-First Search (BFS)  
+➜ Depth-First Search (DFS)  
+
+<span style="color:#9CA3AF; font-weight:600;">5.</span> **Jana Ahmed Samy Shahin**  
+➜ A* Search  
 --------------------------------------------
 
 المشروع ده بيهتم بمشكلة توزيع الكهرباء بشكل أمثل من محطة كهرباء قدرتها محدودة على مجموعة مناطق مختلفة.
