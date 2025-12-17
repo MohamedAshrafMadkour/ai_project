@@ -1,9 +1,16 @@
 # ⚡ Smart Electrical Grid Power Distribution Problem
 ------------------------------------------
+## 🔹 Problem Statement
 
-## 🔹 Problem Overview
-the problem of optimizing power distribution from a limited-capacity power station to multiple regions. The station supplies electricity to three main regions: a Hospital, a Factory, and a Residential Area.
-Each region has a specific power demand, priority level, and transmission cost. The goal is to distribute the available power efficiently while respecting capacity constraints, prioritizing critical regions, and minimizing the overall distribution cost.
+The problem involves **optimizing power distribution** from a limited-capacity power station to multiple regions.  
+The station supplies electricity to three main regions: **Hospital**, **Factory**, and **Residential Area**.  
+
+Each region has a **specific power demand, priority level, and transmission cost**.  
+The objective is to **distribute the available power efficiently**, while:  
+- respecting the station's capacity constraints,  
+- prioritizing critical regions, and  
+- minimizing the overall distribution cost.  
+
 ------------------------------------------
 
 ## 🌍 Regions
