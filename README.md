@@ -57,24 +57,22 @@ Iterative Deepening Search (IDS)
 
 --------------------------------------------
 
-## Team Contributions
+## Algorithms Used
 
-<span style="color:#9CA3AF; font-weight:600;">1.</span> **Mahmoud Hesham Salem**  
-➜ Uniform Cost Search Algorithm  
-➜ Iterative Deepening Search  
+<kbd>1</kbd> Breadth-First Search (BFS)  
 
-<span style="color:#9CA3AF; font-weight:600;">2.</span> **Mohamed Ashraf Madkour**  
-➜ Genetic Algorithm  
+<kbd>2</kbd> Depth-First Search (DFS)  
 
-<span style="color:#9CA3AF; font-weight:600;">3.</span> **Assem Essam Nabil Abdelhamid**  
-➜ Greedy Algorithm  
+<kbd>3</kbd> Uniform Cost Search (UCS)  
 
-<span style="color:#9CA3AF; font-weight:600;">4.</span> **Fatma Mohamed Abdelaty Abdelqader**  
-➜ Breadth-First Search (BFS)  
-➜ Depth-First Search (DFS)  
+<kbd>4</kbd> A* Search  
 
-<span style="color:#9CA3AF; font-weight:600;">5.</span> **Jana Ahmed Samy Shahin**  
-➜ A* Search  
+<kbd>5</kbd> Greedy Algorithm  
+
+<kbd>6</kbd> Genetic Algorithm  
+
+<kbd>7</kbd> Iterative Deepening Search (IDS)  
+
 --------------------------------------------
 
 قررنا نهتم بمشكلة توزيع الكهرباء من محطة كهرباء قدرتها محدودة على مجموعة مناطق مختلفة شكل أمثل .
