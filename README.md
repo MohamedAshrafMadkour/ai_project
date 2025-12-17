@@ -1,4 +1,4 @@
-Smart Electrical Grid Power Distribution Problem 
+# ⚡ Smart Electrical Grid Power Distribution Problem
 ------------------------------------------
 
 Problem Overview
