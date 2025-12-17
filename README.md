@@ -20,13 +20,13 @@ The power station supplies electricity to the following regions:
 
 ## Algorithms Used
 
-<kbd>1</kbd> Breadth-First Search (BFS)  
-<kbd>2</kbd> Depth-First Search (DFS)  
-<kbd>3</kbd> Uniform Cost Search (UCS)  
-<kbd>4</kbd> A* Search  
-<kbd>5</kbd> Greedy Algorithm  
-<kbd>6</kbd> Genetic Algorithm  
-<kbd>7</kbd> Iterative Deepening Search (IDS)  
+<kbd>1</kbd> (**Breadth-First Search (BFS)**) 
+<kbd>2</kbd> (**Depth-First Search (DFS)**)
+<kbd>3</kbd> (**Uniform Cost Search (UCS)**)  
+<kbd>4</kbd> (**A* Search**)  
+<kbd>5</kbd> (**Greedy Algorithm**) 
+<kbd>6</kbd> (**Genetic Algorithm**)   
+<kbd>7</kbd> (**Iterative Deepening Search (IDS)**)   
 
 
 
