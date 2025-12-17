@@ -1,4 +1,4 @@
-Smart Electrical Grid Power Distribution
+Smart Electrical Grid Power Distribution Problem 
 ------------------------------------------
 
 Problem Overview
@@ -14,20 +14,24 @@ Residential (Low Priority)
 -------------------------------------------
 
 Algorithms Used
-The following search and optimization algorithms are applied to solve and analyze the problem:
-Breadth-First Search (BFS)
-Depth-First Search (DFS)
-Uniform Cost Search (UCS)
-A* Search
-Greedy Algorithm 
-Genetic Algorithm
+1- Breadth-First Search (BFS)
+2- Depth-First Search (DFS)
+3- Uniform Cost Search (UCS)
+4- A* Search
+5- Greedy Algorithm 
+6- Genetic Algorithm
+7- Iterative depth search (IDS)
 --------------------------------------------
 
 Team Contributions
-
+1-  Mahmoud hesham salem  ========>    ( Uniform costed search algorithm  -  Iterative depth search )
+2-  Mohamed Ashraf Madkour =======>    ( Genetic Algorithm )
+3 - Assem Essam Nabil Abdelhamid =>    ( Greedy Algorithm ) 
+4 - Fatma Mohamed Abdelaty Abdelqader=>( Breadth-First Search -  Depth-First Search )
+5 - Jana Ahmed Samy Shahin =======>    ( A* Search )
 --------------------------------------------
+
 المشروع ده بيهتم بمشكلة توزيع الكهرباء بشكل أمثل من محطة كهرباء قدرتها محدودة على مجموعة مناطق مختلفة.
 المحطة بتغذي ثلاث مناطق رئيسية: مستشفى، مصنع، ومنطقة سكنية.
 كل منطقة ليها احتياج مختلف من الكهرباء، وأولوية مختلفة، وتكلفة نقل مختلفة.
-
 الهدف هو الوصول لأفضل طريقة توزيع كهرباء.
