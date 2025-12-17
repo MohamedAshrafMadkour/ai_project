@@ -13,14 +13,22 @@ Factory (Medium Priority)
 Residential (Low Priority)
 -------------------------------------------
 
-Algorithms Used
-1- Breadth-First Search (BFS)
-2- Depth-First Search (DFS)
-3- Uniform Cost Search (UCS)
-4- A* Search
-5- Greedy Algorithm 
-6- Genetic Algorithm
-7- Iterative depth search (IDS)
+## Algorithms Used
+
+<span style="color:#9CA3AF; font-weight:600;">1.</span> Breadth-First Search (BFS)  
+
+<span style="color:#9CA3AF; font-weight:600;">2.</span> Depth-First Search (DFS)  
+
+<span style="color:#9CA3AF; font-weight:600;">3.</span> Uniform Cost Search (UCS)  
+
+<span style="color:#9CA3AF; font-weight:600;">4.</span> A* Search  
+
+<span style="color:#9CA3AF; font-weight:600;">5.</span> Greedy Algorithm  
+
+<span style="color:#9CA3AF; font-weight:600;">6.</span> Genetic Algorithm  
+
+<span style="color:#9CA3AF; font-weight:600;">7.</span> Iterative Deepening Search (IDS)  
+
 --------------------------------------------
 
 ## Team Contributions
