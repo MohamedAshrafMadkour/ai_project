@@ -20,20 +20,6 @@ The power station supplies electricity to the following regions:
 
 ## Algorithms Used
 
-<kbd>1</kbd> (**Breadth-First Search (BFS)**) 
-<kbd>2</kbd> (**Depth-First Search (DFS)**)
-<kbd>3</kbd> (**Uniform Cost Search (UCS)**)  
-<kbd>4</kbd> (**A* Search**)  
-<kbd>5</kbd> (**Greedy Algorithm**) 
-<kbd>6</kbd> (**Genetic Algorithm**)   
-<kbd>7</kbd> (**Iterative Deepening Search (IDS)**)   
-
-
-
---------------------------------------------
-
-## Algorithms Used
-
 <kbd>1</kbd> Breadth-First Search (BFS)  
 
 <kbd>2</kbd> Depth-First Search (DFS)  
@@ -46,8 +32,29 @@ The power station supplies electricity to the following regions:
 
 <kbd>6</kbd> Genetic Algorithm  
 
-<kbd>7</kbd> Iterative Deepening Search (IDS)  
+<kbd>7</kbd> Iterative Deepening Search (IDS) 
 
+--------------------------------------------
+## Team Contributions
+
+<kbd>1</kbd> **Mahmoud Hesham Salem**  
+➜ Uniform Cost Search Algorithm  
+➜ Iterative Deepening Search  
+
+<kbd>2</kbd> **Mohamed Ashraf Madkour**  
+➜ Genetic Algorithm  
+
+<kbd>3</kbd> **Assem Essam Nabil Abdelhamid**  
+➜ Greedy Algorithm  
+
+<kbd>4</kbd> **Fatma Mohamed Abdelaty Abdelqader**  
+➜ Breadth-First Search (BFS)  
+➜ Depth-First Search (DFS)  
+
+<kbd>5</kbd> **Jana Ahmed Samy Shahin**  
+➜ A* Search  
+
+ 
 --------------------------------------------
 
 قررنا نهتم بمشكلة توزيع الكهرباء من محطة كهرباء قدرتها محدودة على مجموعة مناطق مختلفة شكل أمثل .
