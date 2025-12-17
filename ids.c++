@@ -1,59 +1,63 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+
 using namespace std;
 
-map<string, vector<pair<string, int>>> graph;
+struct Region {
+    string name;
+    int demand;
+};
 
-bool DLS(string current, string goal, int limit,
-         set<string> &visited, vector<string> &path)
-{
-    path.push_back(current);
+bool dfs(vector<int>& alloc, const vector<Region>& regions, int capacity, int depth, int limit) {
 
-    if (current == goal)
+    if (depth == limit) {
+        int sum = 0;
+        for (int x : alloc) sum += x;
+        if (sum > capacity) return false;
+
+        for (int i = 0; i < regions.size(); i++)
+            if (alloc[i] < regions[i].demand)
+                return false;
+
         return true;
-
-    if (limit == 0) {
-        path.pop_back();
-        return false;
     }
 
-    visited.insert(current);
+    for (int i = 0; i < regions.size(); i++) {
+        alloc[i]++;
+        int used = 0;
+        for (int x : alloc) used += x;
 
-    for (auto &neighbor : graph[current]) {
-        string next = neighbor.first;
-        if (!visited.count(next)) {
-            if (DLS(next, goal, limit - 1, visited, path))
+        if (used <= capacity) {
+            if (dfs(alloc, regions, capacity, depth + 1, limit))
                 return true;
         }
+        alloc[i]--;
     }
 
-    visited.erase(current);
-    path.pop_back();
     return false;
 }
 
-void IDS(string start, string goal, int maxDepth)
-{
-    for (int depth = 0; depth <= maxDepth; depth++) {
-        set<string> visited;
-        vector<string> path;
+int main() {
 
-        if (DLS(start, goal, depth, visited, path)) {
-            for (auto &node : path)
-                cout << node << " ";
-            cout << endl;
-            return;
+    int capacity = 150;
+
+    vector<Region> regions = {
+        {"Hospital", 50},
+        {"Factory", 70},
+        {"Residential", 60}
+    };
+
+    vector<int> allocation(regions.size(), 0);
+
+    for (int limit = 0; limit <= capacity; limit++) {
+        if (dfs(allocation, regions, capacity, 0, limit)) {
+            cout << "IDS Result:\n";
+            for (int i = 0; i < regions.size(); i++)
+                cout << regions[i].name << " -> " << allocation[i] << endl;
+            break;
         }
     }
-}
 
-int main()
-{
-    graph["Station"] = {{"A", 3}, {"B", 6}};
-    graph["A"] = {{"C", 4}};
-    graph["B"] = {{"C", 2}};
-    graph["C"] = {{"Goal", 1}};
-    graph["Goal"] = {};
-
-    IDS("Station", "Goal", 5);
     return 0;
 }
