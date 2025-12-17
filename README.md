@@ -6,14 +6,15 @@ the problem of optimizing power distribution from a limited-capacity power stati
 Each region has a specific power demand, priority level, and transmission cost. The goal is to distribute the available power efficiently while respecting capacity constraints, prioritizing critical regions, and minimizing the overall distribution cost.
 ------------------------------------------
 
-Regions
+## Regions
 The power station supplies electricity to the following regions:
 
-<span style="color:#9CA3AF; font-weight:600;">1.</span> Hospital (High Priority) 
+<kbd>1</kbd> Hospital (**High Priority**)  
 
-<span style="color:#9CA3AF; font-weight:600;">2.</span> Factory (Medium Priority)  
+<kbd>2</kbd> Factory (**Medium Priority**)  
 
-<span style="color:#9CA3AF; font-weight:600;">3.</span> Residential (Low Priority) 
+<kbd>3</kbd> Residential (**Low Priority**)  
+
 
 -------------------------------------------
 
