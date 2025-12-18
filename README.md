@@ -50,16 +50,17 @@ The power station supplies electricity to the following regions:
 
 <kbd>2</kbd> **Mohamed Ashraf Madkour**  
 ➜ Genetic Algorithm  
-➜ Create Readme File 
+➜ Create README File 
 
 <kbd>3</kbd> **Assem Essam Nabil Abdelhamid**  
 ➜ Greedy Algorithm  
-➜ Create AI Proposal
+➜ Create Report file
+
+<kbd>5</kbd> **Jana Ahmed Samy Abdallah Shahin**  
+➜ A* Search  
+➜ Final comparison between all algorithms 
 
 <kbd>4</kbd> **Fatma Mohamed Abdelaty Abdelqader**  
 ➜ Breadth-First Search (BFS)  
 ➜ Depth-First Search (DFS)  
-
-<kbd>5</kbd> **Jana Ahmed Samy Shahin**  
-➜ A* Search  
-➜ Final comparison between all algorithms   
+   
