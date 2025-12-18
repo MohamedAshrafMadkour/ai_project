@@ -54,7 +54,7 @@ The power station supplies electricity to the following regions:
 
 <kbd>3</kbd> **Assem Essam Nabil Abdelhamid**  
 ➜ Greedy Algorithm  
-➜ AI Proposal
+➜ Create AI Proposal
 
 <kbd>4</kbd> **Fatma Mohamed Abdelaty Abdelqader**  
 ➜ Breadth-First Search (BFS)  
