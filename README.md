@@ -62,5 +62,4 @@ The power station supplies electricity to the following regions:
 
 <kbd>5</kbd> **Jana Ahmed Samy Shahin**  
 ➜ A* Search  
-
-
+➜ Final comparison between all algorithms   
