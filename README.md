@@ -50,9 +50,11 @@ The power station supplies electricity to the following regions:
 
 <kbd>2</kbd> **Mohamed Ashraf Madkour**  
 ➜ Genetic Algorithm  
+➜ Create Readme File 
 
 <kbd>3</kbd> **Assem Essam Nabil Abdelhamid**  
 ➜ Greedy Algorithm  
+➜ AI Proposal
 
 <kbd>4</kbd> **Fatma Mohamed Abdelaty Abdelqader**  
 ➜ Breadth-First Search (BFS)  
@@ -61,10 +63,4 @@ The power station supplies electricity to the following regions:
 <kbd>5</kbd> **Jana Ahmed Samy Shahin**  
 ➜ A* Search  
 
- 
---------------------------------------------
 
-قررنا نهتم بمشكلة توزيع الكهرباء من محطة كهرباء قدرتها محدودة على مجموعة مناطق مختلفة شكل أمثل .
-المحطة بتمد ثلاث مناطق رئيسية: مستشفى، مصنع، ومنطقة سكنية.
-كل منطقة ليها احتياج مختلف من الكهرباء، وأولوية مختلفة، وتكلفة نقل مختلفة.
-الهدف هو الوصول لأفضل طريقة توزيع كهرباء.
