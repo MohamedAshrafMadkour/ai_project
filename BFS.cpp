@@ -2,177 +2,97 @@
 #include <vector>
 #include <queue>
 #include <set>
-#include <algorithm>
-#include<string>
+#include <string>
 using namespace std;
 
-struct Requirement {
+struct Region {
     string name;
-    int requiredAmount;
-    int priority;
+    int demand;
     int cost;
 };
-
-vector<Requirement> requirements = {
-    {"Hospital", 50, 3, 2},
-    {"Factory", 70, 2, 3},
-    {"Residential", 60, 1, 1}
-};
-
-int allOfCapacity = 150;
-int stepSize = 10;
-int nodesExplored = 0;
 
 struct State {
-    vector<int> distribution; 
+    vector<int> allocated;
     int cost;
-    int depth;
-
-    State(vector<int> dist, int c, int d) : distribution(dist), cost(c), depth(d) {}
 };
 
+vector<Region> regions = {
+    {"Hospital", 50, 2},
+    {"Factory", 70, 3},
+    {"Residential", 60, 1}
+};
 
-string stateToString(const vector<int>& state) {
-    string s = "";
-    for (int val : state) {
-        s += to_string(val) + ",";
+int capacity = 150;
+
+
+bool isGoal(const State& s) {
+    int used = 0;
+    for (int x : s.allocated)
+        used += x;
+
+ 
+    bool allSatisfied = true;
+    for (int i = 0; i < s.allocated.size(); i++) {
+        if (s.allocated[i] < regions[i].demand) {
+            allSatisfied = false;
+            break;
+        }
     }
-    return s;
+    if (allSatisfied) return true;
+
+    if (used >= capacity) return true;
+
+    return false;
 }
 
-int calculateCost(const vector<int>& distribution) {
-    int totalPower = 0;
-    int transmissionCost = 0;
-    int penalty = 0;
+void BFS() {
+    queue<State> q;
+    set<vector<int>> visited;
 
-    for (int i = 0; i < distribution.size(); i++) {
-        totalPower += distribution[i];
-        transmissionCost += distribution[i] * requirements[i].cost;
+    State start;
+    start.allocated = { 0, 0, 0 };
+    start.cost = 0;
 
-        if (distribution[i] < requirements[i].requiredAmount) {
-            int unmet = requirements[i].requiredAmount - distribution[i];
-            penalty += requirements[i].priority * unmet * 10;
-        }
-    }
+    q.push(start);
+    visited.insert(start.allocated);
 
-    if (totalPower > allOfCapacity) {
-        penalty += (totalPower - allOfCapacity) * 100;
-    }
+    while (!q.empty()) {
+        State current = q.front();
+        q.pop();
 
-    return transmissionCost + penalty;
-}
+        int usedPower = 0;
+        for (int x : current.allocated)
+            usedPower += x;
 
-bool isGoalState(const vector<int>& distribution) {
-    int totalPower = 0;
-    for (int i = 0; i < distribution.size(); i++) {
-        totalPower += distribution[i];
-        
-        if (requirements[i].priority == 3 &&
-            distribution[i] < requirements[i].requiredAmount) {
-            return false;
-        }
-    }
-    return totalPower <= allOfCapacity;
-}
-
-
-vector<State> generateSuccessors(const State& current) {
-    vector<State> successors;
-
-
-    for (int i = 0; i < requirements.size(); i++) {
-        vector<int> newDist = current.distribution;
-
-
-        if (newDist[i] < requirements[i].requiredAmount + stepSize) {
-            newDist[i] += stepSize;
-            int newCost = calculateCost(newDist);
-            successors.push_back(State(newDist, newCost, current.depth + 1));
-        }
-    }
-
-    return successors;
-}
-
-vector<int> runBFS() {
-    nodesExplored = 0;
-    queue<State> frontier;
-    set<string> visited;
-
-    
-    vector<int> initialDist(requirements.size(), 0);
-    State initialState(initialDist, calculateCost(initialDist), 0);
-
-    frontier.push(initialState);
-    visited.insert(stateToString(initialDist));
-
-    State bestState = initialState;
-    int bestCost = initialState.cost;
-
-    int maxDepth = 20; 
-
-    while (!frontier.empty()) {
-        State current = frontier.front();
-        frontier.pop();
-        nodesExplored++;
-
-        if (current.cost < bestCost) {
-            bestCost = current.cost;
-            bestState = current;
+        if (isGoal(current)) {
+            cout << "\nBFS Power Distribution Result\n";
+            cout << "----------------------------\n";
+            for (int i = 0; i < regions.size(); i++) {
+                cout << regions[i].name << " -> "
+                    << current.allocated[i] << " / "
+                    << regions[i].demand << endl;
+            }
+            cout << "Total Cost = " << current.cost << endl;
+            return;
         }
 
+        for (int i = 0; i < regions.size(); i++) {
+            if (current.allocated[i] < regions[i].demand &&
+                usedPower < capacity) {
+                State next = current;
+                next.allocated[i] += 1;
+                next.cost += regions[i].cost;
 
-        if (isGoalState(current.distribution)) {
-            cout << "Goal state reached at depth " << current.depth << endl;
-            return current.distribution;
-        }
-
-
-        if (current.depth >= maxDepth) {
-            continue;
-        }
-
-
-        vector<State> successors = generateSuccessors(current);
-        for (const State& successor : successors) {
-            string stateKey = stateToString(successor.distribution);
-            if (visited.find(stateKey) == visited.end()) {
-                visited.insert(stateKey);
-                frontier.push(successor);
+                if (visited.find(next.allocated) == visited.end()) {
+                    visited.insert(next.allocated);
+                    q.push(next);
+                }
             }
         }
     }
-
-    cout << "Search completed. Returning best state found.\n";
-    return bestState.distribution;
 }
 
 int main() {
-    cout << "=== Breadth-First Search (BFS) ===" << endl;
-    cout << "Station Capacity: " << allOfCapacity << " units\n";
-    cout << "Step Size: " << stepSize << " units\n\n";
-
-    vector<int> bestSolution = runBFS();
-
-    cout << "\n=== Best Power Distribution (BFS) ===" << endl;
-    int totalPower = 0;
-    for (int i = 0; i < requirements.size(); i++) {
-        cout << requirements[i].name << ": " << bestSolution[i] << " units";
-        cout << " (Required: " << requirements[i].requiredAmount << ")";
-        if (bestSolution[i] >= requirements[i].requiredAmount) {
-            cout << " ?";
-        }
-        else {
-            cout << " ? (Shortage: "
-                << requirements[i].requiredAmount - bestSolution[i] << ")";
-        }
-        cout << endl;
-        totalPower += bestSolution[i];
-    }
-
-    cout << "\nTotal Power Used: " << totalPower << "/" << allOfCapacity << endl;
-    cout << "Total Cost: " << calculateCost(bestSolution) << endl;
-    cout << "Nodes Explored: " << nodesExplored << endl;
-
+    BFS();
     return 0;
 }
