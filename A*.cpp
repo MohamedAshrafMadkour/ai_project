@@ -7,8 +7,6 @@
 
 using namespace std;
 
-const int STEP = 5;
-
 struct Region {
     string name;
     int demand;
@@ -16,114 +14,96 @@ struct Region {
 };
 
 struct State {
-    vector<int> allocated;
-    int g;
-    int h;
-    int f;
+    vector<int> alloc;
+    int gCost;   
+    int fCost;   
+};
 
-    bool operator<(const State& other) const {
-        return f > other.f; 
+struct Compare {
+    bool operator()(const State& a, const State& b) const {
+        return a.fCost > b.fCost;
     }
 };
 
-vector<Region> regions = {
-    {"Hospital", 50, 2},
-    {"Factory", 70, 3},
-    {"Residential", 60, 1}
-};
-
-int capacity = 150;
-
-bool isGoal(const State& s) {
+int heuristic(const vector<int>& alloc,
+              const vector<Region>& regions,
+              int capacity) {
     int used = 0;
-    for (int x : s.allocated)
-        used += x;
-    return used == capacity;
+    for (int x : alloc) used += x;
+
+    int remaining = capacity - used;
+    if (remaining <= 0) return 0;
+
+    int minCost = regions[0].cost;
+    for (const auto& r : regions)
+        minCost = min(minCost, r.cost);
+
+    return remaining * minCost;
 }
 
-int heuristic(const State& s) {
-    int h = 0;
-    for (int i = 0; i < regions.size(); i++) {
-        int remaining = max(0, regions[i].demand - s.allocated[i]);
-        h += remaining * regions[i].cost;
-    }
-    return h;
-}
+int main() {
+    int capacity = 150;
 
-void AStar() {
+    vector<Region> regions = {
+        {"Hospital", 50, 2},
+        {"Factory", 70, 3},
+        {"Residential", 60, 1}
+    };
 
-    priority_queue<State> open;
-    set<vector<int>> closed;
+    priority_queue<State, vector<State>, Compare> pq;
+    set<vector<int>> visited;
 
     State start;
-    start.allocated = {0, 0, 0};
-    start.g = 0;
-    start.h = heuristic(start);
-    start.f = start.g + start.h;
+    start.alloc = vector<int>(regions.size(), 0);
+    start.gCost = 0;
+    start.fCost = heuristic(start.alloc, regions, capacity);
 
-    open.push(start);
+    pq.push(start);
 
-    while (!open.empty()) {
+    State best;
 
-        State current = open.top();
-        open.pop();
+    while (!pq.empty()) {
+        State current = pq.top();
+        pq.pop();
 
-        if (closed.count(current.allocated))
+        if (visited.count(current.alloc))
             continue;
 
-        closed.insert(current.allocated);
+        visited.insert(current.alloc);
 
-        if (isGoal(current)) {
-            cout << "Power Distribution Result (A* Algorithm)\n";
-            cout << "----------------------------------------\n";
+        int used = 0;
+        for (int x : current.alloc) used += x;
 
-            for (int i = 0; i < regions.size(); i++) {
-                cout << regions[i].name << " -> Allocated: "
-                     << current.allocated[i] << " / Demand: "
-                     << regions[i].demand << endl;
-            }
-
-            cout << "Total Cost = " << current.g << endl;
-            return;
+        if (used == capacity) {
+            best = current;
+            break;
         }
 
-        int usedPower = 0;
-        for (int x : current.allocated)
-            usedPower += x;
-
         for (int i = 0; i < regions.size(); i++) {
-
-            if (current.allocated[i] < regions[i].demand &&
-                usedPower + STEP <= capacity) {
-
+            if (current.alloc[i] < regions[i].demand) {
                 State next = current;
-                next.allocated[i] += STEP;
-
-                if (next.allocated[i] > regions[i].demand)
-                    continue;
-
-                next.g = current.g + STEP * regions[i].cost;
-                next.h = heuristic(next);
-                next.f = next.g + next.h;
-
-                if (!closed.count(next.allocated)) {
-                    open.push(next);
-                }
+                next.alloc[i]++;
+                next.gCost += regions[i].cost;
+                next.fCost = next.gCost +
+                             heuristic(next.alloc, regions, capacity);
+                pq.push(next);
             }
         }
     }
 
-    cout << "No solution found.\n";
-}
-int main() {
-    AStar();
+    cout << "A* Result:\n";
+    for (int i = 0; i < regions.size(); i++)
+        cout << regions[i].name << " -> "
+             << best.alloc[i] << " units\n";
+
+    cout << "Total Cost = " << best.gCost << endl;
+
     return 0;
 }
-/*     the output
-    Power Distribution Result (A* Algorithm)
-----------------------------------------
-Hospital -> Allocated: 50 / Demand: 50
-Factory -> Allocated: 70 / Demand: 70
-Residential -> Allocated: 60 / Demand: 60
-Total Cost = 370
-    */
+/* 
+A* Result:
+Hospital -> 50 units
+Factory -> 40 units
+Residential -> 60 units
+Total Cost = 280
+*/
