@@ -32,7 +32,7 @@ vector<Region> regions = {
     {"Residential", 60, 1}
 };
 
-int capacity = 180;
+int capacity = 150;
 
 bool isGoal(const State& s) {
     int used = 0;
