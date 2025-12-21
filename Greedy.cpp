@@ -20,11 +20,12 @@ int priorityWeight(const string& priority) {
     return 1; 
 }
 
-void greedyPowerDistribution(vector<Region>& regions, int capacity) {
+void greedyPowerDistribution(vector<Region>& regions, int capacity, int& totalCost) {
+
+    totalCost = 0;
 
     for (int i = 0; i < regions.size(); i++) {
-        regions[i].score =
-            (double)priorityWeight(regions[i].priority) / regions[i].cost;
+        regions[i].score = (double)priorityWeight(regions[i].priority) / regions[i].cost;
         regions[i].allocated = 0;
     }
 
@@ -40,18 +41,22 @@ void greedyPowerDistribution(vector<Region>& regions, int capacity) {
         int allocatedPower = min(regions[i].demand, capacity);
         regions[i].allocated = allocatedPower;
         capacity -= allocatedPower;
+
+        totalCost += allocatedPower * regions[i].cost; 
     }
 }
 
-void printResult(const vector<Region>& regions) {
-    cout << "Power Distribution Result (Greedy Algorithm)\n";
-    cout << "-------------------------------------------\n";
+void printResult(const vector<Region>& regions, int totalCost) {
+    cout << "Power Distribution Result (Greedy Algorithm)" << endl;
+    cout << "-------------------------------------------" << endl;
 
     for (int i = 0; i < regions.size(); i++) {
         cout << regions[i].name << " -> Allocated: "
              << regions[i].allocated << " / Demand: "
              << regions[i].demand << endl;
     }
+
+    cout << "Total Cost: " << totalCost << endl;
 }
 
 int main() {
@@ -63,14 +68,17 @@ int main() {
     regions.push_back({"Factory", 70, "Medium", 3});
     regions.push_back({"Residential", 60, "Low", 1});
 
-    greedyPowerDistribution(regions, stationCapacity);
-    printResult(regions);
+    int totalCost = 0;
+    greedyPowerDistribution(regions, stationCapacity, totalCost);
+    printResult(regions, totalCost);
 
     return 0;
 }
-/*  The output 
+/*
 Power Distribution Result (Greedy Algorithm)
 -------------------------------------------
 Hospital -> Allocated: 50 / Demand: 50
 Residential -> Allocated: 60 / Demand: 60
-Factory -> Allocated: 40 / Demand: 70*/
+Factory -> Allocated: 40 / Demand: 70
+Total Cost: 280
+*/
