@@ -127,3 +127,13 @@ int main() {
          << calculateFitness(bestSolution) << endl;
     return 0;
 }
+
+
+
+------------------------------------------------------
+Output: 
+Best Power Distribution:
+Hospital: 50 units
+Factory: 0 units
+Residential: 2 units
+Fitness Value: -300
