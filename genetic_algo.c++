@@ -117,7 +117,6 @@ vector<int> runGeneticAlgorithm() {
         });
 }
 
-// دالة لحساب التكلفة الإجمالية
 int calculateTotalCost(const vector<int>& solution) {
     int totalCost = 0;
     for (int i = 0; i < solution.size(); i++) {
@@ -153,3 +152,4 @@ Residential: 40 units
 Fitness Value: -300
 Total Cost: 140
     */
+
