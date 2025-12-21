@@ -8,29 +8,30 @@ using namespace std;
 struct Region {
     string name;
     int demand;
+    int priority;
     int cost;
 };
 
 struct State {
     vector<int> allocated;
-    int cost;
+    int totalCost;
+    int currentRegion;
 };
 
 vector<Region> regions = {
-    {"Hospital", 50, 2},
-    {"Factory", 70, 3},
-    {"Residential", 60, 1}
+    {"Hospital", 50, 1, 2},
+    {"Factory", 70, 2, 3},
+    {"Residential", 60, 3, 1}
 };
 
 int capacity = 150;
-
+int STEP_SIZE = 10;
 
 bool isGoal(const State& s) {
     int used = 0;
     for (int x : s.allocated)
         used += x;
 
- 
     bool allSatisfied = true;
     for (int i = 0; i < s.allocated.size(); i++) {
         if (s.allocated[i] < regions[i].demand) {
@@ -38,11 +39,8 @@ bool isGoal(const State& s) {
             break;
         }
     }
-    if (allSatisfied) return true;
 
-    if (used >= capacity) return true;
-
-    return false;
+    return allSatisfied || (used >= capacity);
 }
 
 void BFS() {
@@ -50,11 +48,14 @@ void BFS() {
     set<vector<int>> visited;
 
     State start;
-    start.allocated = { 0, 0, 0 };
-    start.cost = 0;
+    start.allocated = vector<int>(regions.size(), 0);
+    start.totalCost = 0;
+    start.currentRegion = 0;
 
     q.push(start);
     visited.insert(start.allocated);
+
+    State bestSolution = start;
 
     while (!q.empty()) {
         State current = q.front();
@@ -65,34 +66,68 @@ void BFS() {
             usedPower += x;
 
         if (isGoal(current)) {
-            cout << "\nBFS Power Distribution Result\n";
-            cout << "----------------------------\n";
-            for (int i = 0; i < regions.size(); i++) {
-                cout << regions[i].name << " -> "
-                    << current.allocated[i] << " / "
-                    << regions[i].demand << endl;
-            }
-            cout << "Total Cost = " << current.cost << endl;
-            return;
+            bestSolution = current;
+            break;
         }
 
-        for (int i = 0; i < regions.size(); i++) {
-            if (current.allocated[i] < regions[i].demand &&
-                usedPower < capacity) {
-                State next = current;
-                next.allocated[i] += 1;
-                next.cost += regions[i].cost;
+        if (usedPower >= capacity) {
+            continue;
+        }
 
-                if (visited.find(next.allocated) == visited.end()) {
-                    visited.insert(next.allocated);
-                    q.push(next);
-                }
+        int currentRegionIdx = current.currentRegion;
+
+        if (currentRegionIdx < regions.size() &&
+            current.allocated[currentRegionIdx] < regions[currentRegionIdx].demand) {
+
+            State next = current;
+
+            int toAllocate = min({
+                STEP_SIZE,
+                regions[currentRegionIdx].demand - current.allocated[currentRegionIdx],
+                capacity - usedPower
+                });
+
+            next.allocated[currentRegionIdx] += toAllocate;
+            next.totalCost += regions[currentRegionIdx].cost * toAllocate;
+
+            if (next.allocated[currentRegionIdx] >= regions[currentRegionIdx].demand) {
+                next.currentRegion = currentRegionIdx + 1;
+            }
+
+            if (visited.find(next.allocated) == visited.end()) {
+                visited.insert(next.allocated);
+                q.push(next);
+            }
+        }
+        else if (currentRegionIdx < regions.size()) {
+            State next = current;
+            next.currentRegion = currentRegionIdx + 1;
+
+            if (visited.find(next.allocated) == visited.end()) {
+                visited.insert(next.allocated);
+                q.push(next);
             }
         }
     }
+
+    cout << "Power Distribution Result (BFS Algorithm)\n";
+    cout << "-------------------------------------------\n";
+    for (int i = 0; i < regions.size(); i++) {
+        cout << regions[i].name << " -> Allocated: " << bestSolution.allocated[i]
+            << " / Demand: " << regions[i].demand << endl;
+    }
+    cout << "Total Cost: " << bestSolution.totalCost << endl;
 }
 
 int main() {
     BFS();
     return 0;
 }
+/*
+Power Distribution Result (BFS Algorithm)
+-------------------------------------------
+Hospital -> Allocated: 50 / Demand: 50
+Factory -> Allocated: 70 / Demand: 70
+Residential -> Allocated: 30 / Demand: 60
+Total Cost: 340
+*/
