@@ -4,12 +4,14 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
+
 struct Requirement {
     string name;
     int requiredAmount;
     int priority;
     int cost;
 };
+
 vector<Requirement> requirements = {
     {"Hospital", 50, 3, 2},
     {"Factory", 70, 2, 3},
@@ -23,22 +25,24 @@ double mutationRate = 0.1;
 
 vector<int> generateRandomSolution() {
     vector<int> solution;
-    for (int i = 0; i < requirements.size();i++) {
+    for (int i = 0; i < requirements.size(); i++) {
         solution.push_back(rand() % (requirements[i].requiredAmount + 1));
     }
     return solution;
 }
+
 vector<vector<int>> initializePopulation() {
     vector<vector<int>> population;
-    if(populationSize <2){
-    cout<<"Population size must be at least 2\n";
-    return population;
+    if (populationSize < 2) {
+        cout << "Population size must be at least 2\n";
+        return population;
     }
     for (int i = 0; i < populationSize; i++) {
         population.push_back(generateRandomSolution());
     }
     return population;
 }
+
 int calculateFitness(const vector<int>& chromosome) {
     int populationSolutionPower = 0;
     int populationSolutionCost = 0;
@@ -58,8 +62,6 @@ int calculateFitness(const vector<int>& chromosome) {
     return -fitness;
 }
 
-
-
 pair<vector<int>, vector<int>> selectBestParents(
     vector<vector<int>>& population) {
     sort(population.begin(), population.end(),
@@ -68,6 +70,7 @@ pair<vector<int>, vector<int>> selectBestParents(
         });
     return { population[0], population[1] };
 }
+
 pair<vector<int>, vector<int>> performCrossover(
     const vector<int>& parent1,
     const vector<int>& parent2) {
@@ -114,26 +117,39 @@ vector<int> runGeneticAlgorithm() {
         });
 }
 
+// دالة لحساب التكلفة الإجمالية
+int calculateTotalCost(const vector<int>& solution) {
+    int totalCost = 0;
+    for (int i = 0; i < solution.size(); i++) {
+        totalCost += solution[i] * requirements[i].cost;
+    }
+    return totalCost;
+}
 
 int main() {
     srand(time(0));
     vector<int> bestSolution = runGeneticAlgorithm();
+    
     cout << "Best Power Distribution:\n";
     for (int i = 0; i < requirements.size(); i++) {
         cout << requirements[i].name << ": "
              << bestSolution[i] << " units\n";
     }
+
     cout << "Fitness Value: "
          << calculateFitness(bestSolution) << endl;
+
+    int totalCost = calculateTotalCost(bestSolution);
+    cout << "Total Cost: " << totalCost << endl;
+
     return 0;
 }
 
-
-
-------------------------------------------------------
-Output: 
+/* 
 Best Power Distribution:
 Hospital: 50 units
 Factory: 0 units
-Residential: 2 units
+Residential: 40 units
 Fitness Value: -300
+Total Cost: 140
+    */
