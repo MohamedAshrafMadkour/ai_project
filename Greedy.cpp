@@ -68,3 +68,9 @@ int main() {
 
     return 0;
 }
+/*  The output 
+Power Distribution Result (Greedy Algorithm)
+-------------------------------------------
+Hospital -> Allocated: 50 / Demand: 50
+Residential -> Allocated: 60 / Demand: 60
+Factory -> Allocated: 40 / Demand: 70*/
