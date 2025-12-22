@@ -57,7 +57,7 @@ In this project, we model a **Smart Electrical Grid Power Distribution** problem
 ## 3. Heuristic Design
 
 ### A* Heuristic Function
-$h(n) = \text{Remaining Demand} + \text{Priority Penalty}$
+$h(n) = \text{Remaining demand} * \text{min cost}$
 * **Admissibility:** It never overestimates the cost, ensuring A* remains optimal.
 
 ### Greedy Heuristic
