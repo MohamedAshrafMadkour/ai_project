@@ -45,7 +45,7 @@ In this project, we model a **Smart Electrical Grid Power Distribution** problem
 ### 2.6 Greedy Algorithm
 * **Pros:** Very fast and simple.
 * **Cons:** No global optimality guarantee.
-* **Purpose:** Shows limitations of purely local heuristic decisions.
+* **Purpose:** try the algorithm that has the best desicion at the moment  .
 
 ### 2.7 Genetic Algorithm
 * **Pros:** Scales well with problem size.
