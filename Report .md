@@ -75,7 +75,7 @@ $\text{Score} = \frac{\text{Priority Weight}}{\text{Transmission Cost}}$
 | **UCS** | Depends on cost | Optimal -> 240 | Very good |
 | **A\*** | Depends on heuristic | Optimal -> 240 | **Best choice** |
 | **Greedy** | Sometimes | Not guaranteed -> 240 | Acceptable (fast) |
-| **Genetic Algorithm** | Fitness weighted = -300 & total cost = 140 | Near optimal | Good for large problems |
+| **Genetic Algorithm** | Fitness weighted | Near optimal -> 140 | Good for large problems |
 
 ### Analysis:
 * **A\*** achieved optimal results with the fewest node expansions.
