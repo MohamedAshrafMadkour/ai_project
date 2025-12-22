@@ -39,14 +39,13 @@ The power station supplies electricity to the following regions:
 
 <kbd>6</kbd> Genetic Algorithm  
 
-<kbd>7</kbd> Iterative Deepening Search (IDS) 
 
 --------------------------------------------
 ## 👥 Team Contributions
 
 <kbd>1</kbd> **Mahmoud Hesham Salem**  
 ➜ Uniform Cost Search Algorithm  
-➜ Iterative Deepening Search  
+➜ Try to apply Iterative Deepening Search  
 
 <kbd>2</kbd> **Mohamed Ashraf Madkour**  
 ➜ Genetic Algorithm  
