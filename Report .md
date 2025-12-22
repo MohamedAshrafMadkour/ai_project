@@ -70,12 +70,12 @@ $\text{Score} = \frac{\text{Priority Weight}}{\text{Transmission Cost}}$
 
 | Algorithm | Prioritize High-Priority Regions | Minimize Total Cost | Overall Suitability |
 | :--- | :--- | :--- | :--- |
-| **BFS** | Not interested | Not optimal | Very poor |
-| **DFS** | Not interested | Not optimal | Very poor |
-| **UCS** | Depends on cost | Optimal | Very good |
-| **A\*** | Depends on heuristic | Optimal | **Best choice** |
-| **Greedy** | Sometimes | Not guaranteed | Acceptable (fast) |
-| **Genetic Algorithm** | Fitness weighted | Near optimal | Good for large problems |
+| **BFS** | Not interested | Not optimal -> 340 | Very poor |
+| **DFS** | Not interested | Not optimal -> 340 | Very poor |
+| **UCS** | Depends on cost | Optimal -> 240 | Very good |
+| **A\*** | Depends on heuristic | Optimal -> 240 | **Best choice** |
+| **Greedy** | Sometimes | Not guaranteed -> 240 | Acceptable (fast) |
+| **Genetic Algorithm** | Fitness weighted = -300 & total cost = 140 | Near optimal | Good for large problems |
 
 ### Analysis:
 * **A\*** achieved optimal results with the fewest node expansions.
