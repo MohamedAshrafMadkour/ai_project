@@ -14,7 +14,6 @@ In this project, we model a **Smart Electrical Grid Power Distribution** problem
 1. Total distributed power must not exceed station capacity.
 2. High-priority regions are satisfied first.
 3. Total transmission cost is minimized.
-4. Unmet demands are minimized, especially for critical regions.
 
 ---
 
@@ -36,9 +35,7 @@ In this project, we model a **Smart Electrical Grid Power Distribution** problem
 * **Purpose:** Finds the minimum-cost distribution.
 
 ### 2.4 Iterative Deepening Search (IDS)
-* **Pros:** Combines BFS completeness with DFS memory efficiency.
-* **Cons:** Does not consider cost or priority.
-* **Purpose:** Balanced uninformed search technique.
+* Iterative Deepening Search was not suitable for this problem due to the extremely large depth and exponential growth of the search space. 
 
 ### 2.5 A* Search
 * **Pros:** Optimal and highly efficient.
@@ -71,15 +68,14 @@ $\text{Score} = \frac{\text{Priority Weight}}{\text{Transmission Cost}}$
 
 ## 4. Results & Comparison
 
-| Algorithm | Optimal Solution | Time Efficiency | Cost Awareness | Scalability |
-| :--- | :---: | :---: | :---: | :---: |
-| **BFS** | ✖️ | Low | ✖️ | Poor |
-| **DFS** | ✖️ | Medium | ✖️ | Poor |
-| **UCS** | ☑️ | Medium | ☑️ | Medium |
-| **IDS** | ✖️ | Medium | ✖️ | Poor |
-| **A\*** | ☑️ | High | ☑️ | High |
-| **Greedy** | ✖️ | Very High | Partial | High |
-| **Genetic** | Near-Optimal | High | ☑️ | Very High |
+| Algorithm | Prioritize High-Priority Regions | Minimize Total Cost | Overall Suitability |
+| :--- | :--- | :--- | :--- |
+| **BFS** | Not interested | Not optimal | Very poor |
+| **DFS** | Not interested | Not optimal | Very poor |
+| **UCS** | Depends on cost | Optimal | Very good |
+| **A\*** | Depends on heuristic | Optimal | **Best choice** |
+| **Greedy** | Sometimes | Not guaranteed | Acceptable (fast) |
+| **Genetic Algorithm** | Fitness weighted | Near optimal | Good for large problems |
 
 ### Analysis:
 * **A\*** achieved optimal results with the fewest node expansions.
