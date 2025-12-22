@@ -72,9 +72,9 @@ $\text{Score} = \frac{\text{Priority Weight}}{\text{Transmission Cost}}$
 | :--- | :--- | :--- | :--- |
 | **BFS** | Not interested | Not optimal -> 340 | Very poor |
 | **DFS** | Not interested | Not optimal -> 340 | Very poor |
-| **UCS** | Depends on cost | Optimal -> 240 | Very good |
-| **A\*** | Depends on heuristic | Optimal -> 240 | **Best choice** |
-| **Greedy** | Sometimes | Not guaranteed -> 240 | Acceptable (fast) |
+| **UCS** | Depends on cost | Optimal -> 280 | Very good |
+| **A\*** | Depends on heuristic | Optimal -> 280 | **Best choice** |
+| **Greedy** | Sometimes | Not guaranteed -> 280 | Acceptable (fast) |
 | **Genetic Algorithm** | Fitness weighted | Near optimal -> 140 | Good for large problems |
 
 ### Analysis:
